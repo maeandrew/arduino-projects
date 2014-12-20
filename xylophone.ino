@@ -1,3 +1,17 @@
+/**
+  Alpha version of xylophone
+  1) arduino
+  2) breadboard shield
+  3) Transistors *4
+  4) 1 kOm resistors *4
+  5) Stepper motor
+  6) Servo motor
+  7) Сhildren's xylophone
+  
+  Schematic diagram and video will be coming soon
+
+*/
+
 #include <Stepper.h>
 #include <Servo.h> 
 
