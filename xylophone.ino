@@ -8,7 +8,9 @@
   6) Servo motor
   7) Сhildren's xylophone
   
-  Schematic diagram and video will be coming soon
+  Schematic diagram will be coming soon
+  
+  Video: https://www.youtube.com/watch?v=WzDKYsDgcLQ
 
 */
 
