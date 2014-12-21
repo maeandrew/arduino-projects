@@ -13,7 +13,6 @@
   Video: https://www.youtube.com/watch?v=WzDKYsDgcLQ
 
 */
-
 #include <Stepper.h>
 #include <Servo.h> 
 
@@ -49,27 +48,27 @@ int length2 = 15; // the number of notes
 char notes2[] = "ccggaagffeeddc "; // a space represents a rest
 int beats2[] = { 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 4 };
 
-int length3 = 25; // the number of windy notes
+int length3 = 25; // the number of notes
 char notes3[] = "gagfefgdefefggagfefgdgec "; // a space represents a rest
 int beats3[] = { 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 2, 2, 1, 1, 4 };
 
-int length4 = 32; // the number of rainy notes
+int length4 = 32; // the number of notes
 char notes4[] = "geggegeggeggeaggegfedcdegfedcde ";
 int beats4[] = { 2, 2, 1, 1, 2, 2, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 4 };
 
-int length5 = 27; // the number of sunny notes
+int length5 = 28; // the number of notes
 char notes5[] = "cccegecdddbagcccegecddgabbcc ";
 int beats5[] = { 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 2, 4 };
 
 
-int length6 = 33; // the number of cloudy notes
+int length6 = 33; // the number of notes
 char notes6[] = "cdeccdecefgefggagfecgagfecdgcdgc "; // a space represents a rest
 int beats6[] = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 2, 2, 4, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 2, 2, 2, 2, 4, 2, 2, 4, 4 };
 
 // solfeo Maria
 int length7 = 29; // the number of notes
 char notes7[] = "cccdefefgfedec cccdefefgfedc "; // a space represents a rest
-int beats7[] = { 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1,  5 };
+int beats7[] = { 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 5 };
 
 // solfeo estrella
 int length8 = 50; // the number of notes
@@ -77,7 +76,7 @@ char notes8[] = "cccdefefgfedec cccdefefgfedc efgagfedec efgagfedc "; // a space
 int beats8[] = { 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1,  3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5 };
 
 
-int length9 = 18;
+int length9 = 18; // the number of notes
 char notes9[] = "cdfda ag cdfdg gf ";
 int beats9[] = {1,1,1,1,1,1,4,4,2,1,1,1,1,1,1,4,4,2};
 
@@ -90,11 +89,12 @@ int stepper_speed = 40;
  
 void setup() {
   Serial.begin(9600);  
+  
   myStepper.setSpeed(stepper_speed);  //max for  EM34  
   
   myServo.attach(2);
   
-//  intro();
+  intro();
    
 }
 
@@ -124,8 +124,8 @@ void intro() {
 
 void loop() {
  
-     
-   for (int m = 0; m < sizeof(allLength); m++) {
+   int melodies_count = sizeof(allLength);
+   for (int m = 0; m < melodies_count; m++) {
      for (int i = 0; i < allLength[m]; i++) {
         if (allNotes[m][i] == ' ') {
           delay(allBeats[m][i] * tempo); // rest
